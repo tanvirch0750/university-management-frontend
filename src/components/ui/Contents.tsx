@@ -14,6 +14,7 @@ function Contents({ children }: Tchildren) {
       style={{
         minHeight: '100vh',
         color: 'black',
+        padding: '1rem',
       }}
     >
       <UMBreadCrumbs
