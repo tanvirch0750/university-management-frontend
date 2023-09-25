@@ -2,12 +2,10 @@
 
 import { USER_ROLE } from '@/constants/role';
 import { SidebarItems } from '@/constants/sidebar';
-import type { MenuProps } from 'antd';
 import { Layout, Menu } from 'antd';
 import { useState } from 'react';
 
 const { Sider } = Layout;
-type MenuItem = Required<MenuProps>['items'][number];
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
