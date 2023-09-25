@@ -1,5 +1,3 @@
-'use client';
-
 function NotFoundPage() {
   return (
     <div>
