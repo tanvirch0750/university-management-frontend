@@ -8,7 +8,7 @@ export const authApi = baseApi.injectEndpoints({
       query: (loginData) => ({
         url: `${AUTH_URL}/login`,
         method: 'POST',
-        dat: loginData,
+        data: loginData,
       }),
       invalidatesTags: ['user'],
     }),
