@@ -7,6 +7,7 @@ import { useUserLoginMutation } from '@/redux/api/authApi';
 import { storeUserInfo } from '@/services/auth.service';
 import { Button, Col, Row } from 'antd';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { SubmitHandler } from 'react-hook-form';
 import loginImage from '../../assets/Computer login-bro.svg';
 
@@ -17,10 +18,16 @@ type FormValues = {
 
 function LoginPage() {
   const [userLogin] = useUserLoginMutation();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const res = await userLogin({ ...data }).unwrap();
+
+      if (res?.data.accessToken) {
+        router.push('/profile');
+      }
+
       storeUserInfo({ accessToken: res?.data.accessToken });
     } catch (error) {}
   };
@@ -47,7 +54,7 @@ function LoginPage() {
           First Login Into Your Account
         </h1>
         <div>
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} isReset={false}>
             <div>
               <FormInput type="text" size="large" name="id" label="User Id" />
             </div>

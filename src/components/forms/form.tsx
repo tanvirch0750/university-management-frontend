@@ -9,9 +9,15 @@ type FormConfig = {
 type FormProps = {
   children?: React.ReactElement | React.ReactNode;
   submitHandler: SubmitHandler<any>;
+  isReset?: boolean;
 } & FormConfig;
 
-function Form({ children, submitHandler, defaultValues }: FormProps) {
+function Form({
+  children,
+  submitHandler,
+  defaultValues,
+  isReset = true,
+}: FormProps) {
   const formConfig: FormConfig = {};
 
   if (!!defaultValues) formConfig['defaultValues'] = defaultValues;
@@ -22,7 +28,7 @@ function Form({ children, submitHandler, defaultValues }: FormProps) {
 
   const onSubmit = (data: any) => {
     submitHandler(data);
-    reset();
+    isReset && reset();
   };
 
   return (
