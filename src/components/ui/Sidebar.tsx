@@ -1,7 +1,7 @@
 'use client';
 
-import { USER_ROLE } from '@/constants/role';
 import { SidebarItems } from '@/constants/sidebar';
+import { getUserInfo } from '@/services/auth.service';
 import { Layout, Menu } from 'antd';
 import { useState } from 'react';
 
@@ -10,7 +10,7 @@ const { Sider } = Layout;
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
 
-  const role = USER_ROLE.STUDENT;
+  const { role } = getUserInfo() as any;
 
   return (
     <Sider
