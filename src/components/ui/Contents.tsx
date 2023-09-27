@@ -2,6 +2,7 @@
 
 import { Tchildren } from '@/types/global';
 import { Layout } from 'antd';
+import Header from './Header';
 import UMBreadCrumbs from './UMBreadCrumbs';
 
 const { Content } = Layout;
@@ -14,22 +15,24 @@ function Contents({ children }: Tchildren) {
       style={{
         minHeight: '100vh',
         color: 'black',
-        padding: '1rem',
       }}
     >
-      <UMBreadCrumbs
-        items={[
-          {
-            label: `${base}`,
-            link: `/${base}`,
-          },
-          {
-            label: `student`,
-            link: `/student`,
-          },
-        ]}
-      />
-      {children}
+      <Header />
+      <div style={{ padding: '1rem' }}>
+        <UMBreadCrumbs
+          items={[
+            {
+              label: `${base}`,
+              link: `/${base}`,
+            },
+            {
+              label: `student`,
+              link: `/student`,
+            },
+          ]}
+        />
+        {children}
+      </div>
     </Content>
   );
 }
