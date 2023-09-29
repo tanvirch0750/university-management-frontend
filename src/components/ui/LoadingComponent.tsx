@@ -1,6 +1,6 @@
 import { Row, Space, Spin } from 'antd';
 
-const Loading = () => {
+const LoadingComponent = () => {
   return (
     <Row
       justify="center"
@@ -16,4 +16,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default LoadingComponent;

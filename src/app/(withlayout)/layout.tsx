@@ -1,5 +1,6 @@
 'use client';
 import Contents from '@/components/ui/Contents';
+import LoadingComponent from '@/components/ui/LoadingComponent';
 import Sidebar from '@/components/ui/Sidebar';
 import { isLoggedIn } from '@/services/auth.service';
 import { Tchildren } from '@/types/global';
@@ -20,7 +21,7 @@ const DashboardLayout = ({ children }: Tchildren) => {
   }, [isUserLoggedIn, router]);
 
   if (!isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingComponent />;
   }
 
   return (

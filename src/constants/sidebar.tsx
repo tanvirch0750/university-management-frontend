@@ -137,18 +137,7 @@ export function SidebarItems(role: string) {
       icon: <TableOutlined />,
       key: `/${role}/user`,
     },
-    {
-      label: 'Manage permission',
-      key: 'manage-permission',
-      icon: <AppstoreOutlined />,
-      style: { backgroundColor: '#002140' },
-      children: [
-        {
-          label: <Link href={`/${role}/permission`}>View permissions</Link>,
-          key: `/${role}/permission`,
-        },
-      ],
-    },
+
     {
       label: 'Management',
       key: 'management',
