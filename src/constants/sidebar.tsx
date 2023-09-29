@@ -18,7 +18,7 @@ export function SidebarItems(role: string) {
       icon: <UserOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/profile`}>Account Profile</Link>,
+          label: <Link href={`/${role}`}>Account Profile</Link>,
           key: `/${role}/profile`,
         },
         {
@@ -39,9 +39,10 @@ export function SidebarItems(role: string) {
       icon: <TableOutlined />,
     },
     {
-      label: <Link href={`/${role}/faculty`}>Manage Faculty</Link>,
+      label: <Link href={`/${role}/manage-faculty`}>Manage Faculty</Link>,
       key: `/${role}/manage-faculty`,
       style: { backgroundColor: '#002140' },
+      icon: <TableOutlined />,
     },
   ];
 
@@ -126,13 +127,13 @@ export function SidebarItems(role: string) {
     ...defaultSidebarItems,
     ...commonAdminSidebarItems,
     {
-      label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
+      label: <Link href={`/${role}/manage-admin`}>Manage Admin</Link>,
       icon: <TableOutlined />,
       style: { backgroundColor: '#002140' },
       key: `/${role}/admin`,
     },
     {
-      label: <Link href={`/${role}/user`}>Manage User</Link>,
+      label: <Link href={`/${role}/manage-user`}>Manage User</Link>,
       style: { backgroundColor: '#002140' },
       icon: <TableOutlined />,
       key: `/${role}/user`,
