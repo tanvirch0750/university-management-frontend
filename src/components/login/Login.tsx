@@ -5,7 +5,7 @@ import FormInput from '@/components/forms/FormInput';
 import { sencondaryColor } from '@/constants/colors';
 import { useUserLoginMutation } from '@/redux/api/authApi';
 import { storeUserInfo } from '@/services/auth.service';
-import { Button, Col, Row } from 'antd';
+import { Button, Col, Row, message } from 'antd';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { SubmitHandler } from 'react-hook-form';
@@ -26,6 +26,7 @@ function Login() {
 
       if (res?.accessToken) {
         router.push('/profile');
+        message.success('User logged in successfully');
       }
 
       storeUserInfo({ accessToken: res?.accessToken });
