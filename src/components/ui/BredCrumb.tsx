@@ -3,14 +3,7 @@
 import { getUserInfo } from '@/services/auth.service';
 import UMBreadCrumbs from './UMBreadCrumbs';
 
-function BredCrumb({
-  items,
-}: {
-  items: {
-    label: string;
-    link: string;
-  }[];
-}) {
+function BredCrumb() {
   const { role } = getUserInfo() as any;
   return (
     <div>
