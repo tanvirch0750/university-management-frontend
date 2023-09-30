@@ -4,6 +4,7 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 type FormConfig = {
   defaultValues?: Record<string, any>;
+  resolver?: any;
 };
 
 type FormProps = {
@@ -17,10 +18,12 @@ function Form({
   submitHandler,
   defaultValues,
   isReset = true,
+  resolver,
 }: FormProps) {
   const formConfig: FormConfig = {};
 
   if (!!defaultValues) formConfig['defaultValues'] = defaultValues;
+  if (!!resolver) formConfig['resolver'] = resolver;
 
   const methods = useForm<FormProps>(formConfig);
 

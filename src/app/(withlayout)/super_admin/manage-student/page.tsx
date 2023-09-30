@@ -8,7 +8,7 @@ function ManageStudentPage() {
       <BredCrumb />
       <h1>This is manage student page</h1>
       <Link href="/super_admin/manage-student/create">
-        <Button>Create Student</Button>
+        <Button type="primary">Create Student</Button>
       </Link>
     </div>
   );
