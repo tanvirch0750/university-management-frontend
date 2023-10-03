@@ -10,11 +10,20 @@ const ActionBar = ({ title, children }: ActionBarProps) => {
         display: 'flex',
         flexDirection: 'column',
         gap: '10px',
-        marginTop: '10px',
+        marginTop: '20px',
+        marginBottom: '20px',
       }}
     >
       <h1>{title}</h1>
-      <div style={{ display: 'flex' }}>{children}</div>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 };

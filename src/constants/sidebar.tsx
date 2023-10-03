@@ -146,7 +146,7 @@ export function SidebarItems(role: string) {
       style: { backgroundColor: '#002140' },
       children: [
         {
-          label: <Link href={`/${role}/department`}>Department</Link>,
+          label: <Link href={`/${role}/manage-department`}>Department</Link>,
           key: `/${role}/department`,
         },
       ],
