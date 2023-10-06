@@ -13,9 +13,7 @@ export const axiosBaseQuery =
       data?: AxiosRequestConfig['data'];
       params?: AxiosRequestConfig['params'];
       meta?: IMeta;
-      message?: string;
-      status?: string;
-      statusCode?: number;
+
       contentType?: string;
     },
     unknown,
@@ -28,7 +26,7 @@ export const axiosBaseQuery =
         method,
         data,
         params,
-        headers: { contentType: contentType || 'application/json' },
+        headers: { 'Content-Type': contentType || 'application/json' },
       });
 
       return { data: result };
