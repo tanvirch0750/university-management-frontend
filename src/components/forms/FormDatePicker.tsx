@@ -20,7 +20,8 @@ const FormDatePicker = ({
 
   const handleOnChange: DatePickerProps['onChange'] = (date, dateString) => {
     onChange ? onChange(date, dateString) : null;
-    setValue(name, dateString);
+    // setValue(name, dateString); to get date string format
+    setValue(name, date); // ISO string date format
   };
 
   return (
