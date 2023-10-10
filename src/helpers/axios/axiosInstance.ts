@@ -1,6 +1,7 @@
 import { authKey } from '@/constants/storgeKey';
+import { getNewAccessToken } from '@/services/auth.service';
 import { IGenericErrorResponse, ResponseSuccessType } from '@/types';
-import { getFromLocalStorage } from '@/utils/localStorage';
+import { getFromLocalStorage, setLocalStorage } from '@/utils/localStorage';
 
 import axios from 'axios';
 
@@ -38,15 +39,27 @@ instance.interceptors.response.use(
     };
     return responseObject;
   },
-  function (error) {
-    const responseObject: IGenericErrorResponse = {
-      statusCode: error?.response?.data?.error?.statusCode || 500,
-      message: error?.response?.data?.message || 'Something went wrong',
-      errorMessages: error?.response?.data?.errorMessages,
-    };
-
-    return Promise.reject(responseObject);
+  async function (error) {
+    const config = error?.config;
+    if (error?.response?.status === 403 && !config?.sent) {
+      config.sent = true;
+      const response = await getNewAccessToken();
+      const accessToken = response?.data?.accessToken
+       config.headers['Authorization'] = accessToken;
+       setLocalStorage(authKey, accessToken)
+       return instance(config)
+    } else {
+      const responseObject: IGenericErrorResponse = {
+        statusCode: error?.response?.data?.error?.statusCode || 500,
+        message: error?.response?.data?.message || 'Something went wrong',
+        errorMessages: error?.response?.data?.errorMessages,
+      };
+  
+      return Promise.reject(responseObject);
+    }
+   
   }
 );
 
 export { instance };
+
